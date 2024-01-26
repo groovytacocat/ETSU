@@ -1,0 +1,175 @@
+﻿using MyDLL;
+
+namespace Shamazon;
+
+class Shamazon
+{
+    static string[] MENU_OPTIONS = new string[]
+    {
+        "Browse Products",
+        "Add To Cart",
+        "View Cart",
+        "Complete Purchase",
+        "Exit"
+    };
+
+    static string[] PRODUCT_NAMES = new string[]
+    {
+        "Laptop",
+        "Headphones",
+        "Phone",
+        "GPU",
+        "Monitor",
+        "Couch",
+        "Shoes",
+        "Purse",
+        "Sheets",
+        "Keyboard"
+    };
+
+    static double[] PRODUCT_PRICES = new double[]
+    {
+        2499.99,
+        399.99,
+        1299.99,
+        3999.99,
+        435.99,
+        2250.00,
+        275.00,
+        450.00,
+        85.99,
+        179.99
+    };
+    static void InitializeProducts(List<int> availableProducts)
+    {
+        Random rNum = new Random();
+
+        int prodNum;
+
+        while(availableProducts.Count() < 5)
+        {
+            prodNum = rNum.Next(0, 10);
+
+            if(!availableProducts.Contains(prodNum))
+            {
+                availableProducts.Add(prodNum);
+            }
+        }
+
+
+    }
+
+    static void DisplayMenu()
+    {
+        for(int i = 0; i < MENU_OPTIONS.Length; i++)
+        {
+            Console.WriteLine($"{i + 1}. {MENU_OPTIONS[i]}");
+        }
+    }
+
+    static int GetChoice()
+    {
+        int choice;
+
+        do
+        {
+            choice = CSCI1250.Validate<int>("Select an option (1/2/3/4/5): ", "Invalid Input. Select an option (1/2/3/4/5): ");
+            if(choice < 1 || choice > MENU_OPTIONS.Length)
+            {
+                Console.Write("Invalid Input. ");
+            }
+        }while(choice < 1 || choice > MENU_OPTIONS.Length);
+
+        return choice;
+    }
+
+    static void DisplayProducts(List<int> availableProducts)
+    {
+        Console.WriteLine("\nAvailable Products: ");
+
+        for(int i = 0; i < availableProducts.Count(); i++)
+        {
+            Console.WriteLine($"{i + 1}. {PRODUCT_NAMES[availableProducts[i]]} - {PRODUCT_PRICES[availableProducts[i]]:C}");
+        }
+
+        Console.WriteLine();
+    }
+
+    static void AddToCart(List<int> availableProducts, List<int> userCart)
+    {
+        int itemChoice;
+
+        DisplayProducts(availableProducts);
+
+        itemChoice = GetChoice() - 1;
+
+        userCart.Add(availableProducts[itemChoice]);
+
+        Console.WriteLine($"{PRODUCT_NAMES[availableProducts[itemChoice]]} has been added to your cart\n");
+    }
+
+    static void ViewCart(List<int> userCart)
+    {
+        Console.WriteLine("\nYour Shopping Cart: ");
+
+        foreach(int item in userCart)
+        {
+            Console.WriteLine($"- {PRODUCT_NAMES[item]} - {PRODUCT_PRICES[item]:C}");
+        }
+
+        CalcTotal(userCart);
+    }
+
+    static void CalcTotal(List<int> userCart)
+    {
+        double total = 0.0;
+
+        foreach(int item in userCart)
+        {
+            total += PRODUCT_PRICES[item];
+        }
+
+        Console.WriteLine($"Total cost: {total:C}\n");
+    }
+
+    static void Main(string[] args)
+    {
+        List<int> stock = new List<int>();
+        List<int> shoppingCart = new List<int>();
+
+        Console.WriteLine("Welcome to the online shopping app!\n");
+
+        InitializeProducts(stock);
+
+        int menuChoice;
+
+        do
+        {
+            DisplayMenu();
+
+            menuChoice = GetChoice();
+
+            switch (menuChoice)
+            {
+                case 1:
+                    DisplayProducts(stock);
+                    break;
+                case 2:
+                    AddToCart(stock, shoppingCart);
+                    break;
+                case 3:
+                    ViewCart(shoppingCart);
+                    break;
+                case 4:
+                    CalcTotal(shoppingCart);
+                    Console.WriteLine("Purchase completed. Thank you!");
+                    menuChoice = 5;
+                    break;
+                case 5:
+                    Console.WriteLine("Goodbye!");
+                    break;
+            }
+        } while (menuChoice != 5);
+        
+    }
+}
