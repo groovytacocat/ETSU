@@ -1,4 +1,4 @@
-#ETSU
+# ETSU 
 
 Repository for any/all of my programming related Computer Science coursework at East Tennessee State University
 
