@@ -1,7 +1,7 @@
 namespace MyDLL
 {
 
-    public class CSCI1250
+    public class HoovenLib
     {
         //Generic Parse method implemented by IParsable<T>
         public static T Parse<T>(string s, IFormatProvider provider) where T : IParsable<T>
