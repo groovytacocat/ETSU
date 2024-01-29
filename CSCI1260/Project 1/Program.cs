@@ -17,6 +17,7 @@ namespace PlaylistManager;
 
 class Program
 {
+    //BEGIN MAIN
     static void Main(string[] args)
     {
         
@@ -27,6 +28,7 @@ class Program
 
         Console.WriteLine("Welcome to Playlist Manager");
 
+        
         do
         {
             DisplayMenu();
@@ -35,12 +37,13 @@ class Program
             switch(userChoice)
             {
                 case 1:
-                    int numAlbums;
-                    numAlbums = HoovenLib.Validate<int>("\nHow many albums would you like to add? ", "Please enter a positive integer. ", 1, 1000);
+                    int numAlbums = HoovenLib.Validate<int>("\nHow many albums would you like to add? ", "Please enter a positive integer. ", 1, 1000);
+
                     for(int i = 0; i < numAlbums; i++)
                     {
                         discography.Add(CreateAlbum());
                     }
+
                     break;
                 case 2:
                     if (discography.Count == 0)
@@ -89,8 +92,6 @@ class Program
                     else
                     {
                         int playChoice = HoovenLib.Validate<int>("\nWhich playlist would you like to edit: ", $"Please choose a number between 1 and {userPlaylists.Count}", 1, userPlaylists.Count);
-
-                        EditPlaylist(userPlaylists[playChoice], discography);
                     }
                     break;
                 case 7:
@@ -99,8 +100,41 @@ class Program
             }
 
         } while (userChoice != 7);
+        
+    } //END MAIN
 
-    }
+
+    /*
+        1. Add Album //DONE
+        2. View Albums
+            1. View Info on Album
+        3. Add Song
+        4. View All Songs
+            1. View info on Song
+        5. Create Playlist //DONE
+        6. View Playlists
+            1. Get Playlist Info
+                i. Display Song Info
+            2. Add Song
+            3. Remove Song
+            4. Shuffle Playlist
+        7. Exit
+
+
+    COMMON FUNCTIONALITIES?
+        * View Info (Album, Song, Playlist)
+
+                        for (int i = 0; i < playlist.TrackList.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {playlist.TrackList[i]}");
+                    }
+
+                    int removeChoice = HoovenLib.Validate<int>("\nWhich song would you like to remove: ", $"Please enter a valid choice from 1 to {playlist.TrackList.Count} ", 1, playlist.TrackList.Count) - 1;
+
+                    Console.WriteLine($"{playlist.TrackList[removeChoice]} has been removed!");
+
+                    playlist.RemoveSong(playlist.TrackList[removeChoice]);
+    */
 
     public static void DisplaySongs(List<Album> allSongs)
     {
@@ -121,6 +155,7 @@ class Program
             }
         }
     }
+
 
     public static Playlist CreatePlaylist(List<Album> songCollection)
     {
@@ -182,8 +217,9 @@ class Program
 
     public static Album CreateAlbum()
     {
-        string genreString;
-        int numSongs;
+        string genreString, memberName;
+        int numSongs, numMembers;
+        List<string> band = new List<string>();
         Genre genre = Genre.Pop;
         List<string> genres = new List<string> { "rock", "hiphop", "pop", "rap", "country" };
 
@@ -194,6 +230,16 @@ class Program
 
         Console.Write("What is the Band Name: ");
         album.bandName = Console.ReadLine();
+
+        numMembers = HoovenLib.Validate<int>("How many band members are there", "Please enter a valid positive integer. ", 1, 100);
+
+        for(int i = 0; i < numMembers; i++)
+        {
+            Console.Write("Enter Band Member Name: ");
+            memberName = Console.ReadLine();
+
+            band.Add(memberName);
+        }
 
         album.releaseDate = HoovenLib.Validate<int>("What year was this album released: ", "Please enter a valid year (1889 - Present). ", 1889, 2024);
 
@@ -247,35 +293,6 @@ class Program
         return album;
     }
 
-    public static void EditPlaylist(Playlist playlist, List<Album> allSongs)
-    {
-        List<char> accepted = new List<char> { 'A', 'a', 'R', 'r' };
-
-        do
-        {
-            char editChoice = HoovenLib.Validate<char>("\nWould you like to (A)dd or (R)emove songs from this playlist: ", "Invalid choice. ", accepted);
-
-            switch (char.ToUpper(editChoice))
-            {
-                case 'A':
-                    DisplaySongs(allSongs);
-
-                    break;
-                case 'R':
-                    for (int i = 0; i < playlist.TrackList.Count; i++)
-                    {
-                        Console.WriteLine($"{i + 1}. {playlist.TrackList[i]}");
-                    }
-
-                    int removeChoice = HoovenLib.Validate<int>("\nWhich song would you like to remove: ", $"Please enter a valid choice from 1 to {playlist.TrackList.Count} ", 1, playlist.TrackList.Count) - 1;
-
-                    Console.WriteLine($"{playlist.TrackList[removeChoice]} has been removed!");
-
-                    playlist.RemoveSong(playlist.TrackList[removeChoice]);
-                    break;
-            }
-        } while (HoovenLib.Repeat("\nWould you like to continue (Y/N)? ", "Please enter Y/y for Yes or N/n for No "));
-    }
     public static void DisplayMenu()
     {
         Console.WriteLine($"\n1. Add Album(s)\n2. View Album(s)\n3. View Songs\n4. Create Playlist\n5. View Playlists\n6. Edit Playlist(s)\n7. Exit");

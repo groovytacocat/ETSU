@@ -39,15 +39,9 @@ namespace PlaylistManager
             return this.songList;
         }
 
-        public override void GetSong(string song)
+        public override string GetSong(int songNum)
         {
-            foreach(Song s in this.songList)
-            {
-                if(song.ToLower() == s.name.ToLower())
-                {
-                    s.ToString();
-                }    
-            }
+            return this.songList[songNum].ToString();
         }
 
         /// <summary>
@@ -74,13 +68,13 @@ namespace PlaylistManager
         /// <param name="albumName">Name of Album as a <see cref="String"/></param>
         /// <param name="bandName">Name of band as a <see cref="String"/></param>
         /// <param name="releaseDate">Year album was released as an <see cref="int"/> </param>
-        public Album(string albumName, string bandName, int releaseDate) : base()
+        public Album(string albumName, string bandName, List<string> inMembers, int releaseDate) : base()
         {
             this.title = albumName;
-            this.bandMembers = new List<string>();
+            this.bandMembers = inMembers;
             this.bandName = bandName;
             this.releaseDate = releaseDate;
         }
-        public Album() : this(String.Empty, String.Empty, 0) { }
+        public Album() : this("No Album", "N/A", new List<string>(), 0) { }
     }
 }

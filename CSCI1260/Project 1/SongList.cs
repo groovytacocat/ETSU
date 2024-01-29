@@ -41,16 +41,25 @@ namespace PlaylistManager
         /// <returns>Returns a <see cref="List{Song}"/></returns>
         public abstract List<Song> AddSong(Song song);
 
-        public abstract void GetSong(string song);
+        public abstract string GetSong(int songNum);
+
+        /// <summary>
+        /// Explicit Constructor for <see cref="SongList"/>
+        /// </summary>
+        /// <param name="inSongList"><see cref="List{T}"/> of <see cref="Song"/>s</param>
+        /// <param name="inRunTime">Length in seconds of <see cref="SongList"/></param>
+        /// <param name="inTitle">Title of <see cref="SongList"/></param>
+        public SongList(List<Song> inSongList, int inRunTime, string inTitle)
+        {
+            this.songList = inSongList;
+            this.runTime = inRunTime;
+            this.title = inTitle;
+        }
 
         /// <summary>
         /// Creates an instance of <see cref="SongList"/>
         /// </summary>
-        public SongList()
-        {
-            this.songList = new List<Song>();
-            this.runTime = 0;
-        }
+        public SongList() : this(new List<Song>(), 0, String.Empty) { }
     }
 }
 

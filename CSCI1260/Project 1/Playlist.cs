@@ -24,6 +24,7 @@ namespace PlaylistManager
     {
         public List<Song> TrackList { get {return this.songList; } }
         public string Name { get { return this.title; } }
+
         public override List<Song> AddSong(Song song)
         {
 
@@ -34,18 +35,19 @@ namespace PlaylistManager
             return songList;
         }
 
-        public override void GetSong(string song)
+        public override string GetSong(int songNum)
         {
-            throw new NotImplementedException();
+            return this.songList[songNum].ToString();
         }
 
-        public override List<Song> RemoveSong(Song song)
+        public List<Song> RemoveSong(Song song)
         {
             this.songList.Remove(song);
             runTime -= song.songLength;
 
             return this.songList;
         }
+
         public void Shuffle()
         {
             List<Song> shuffled = new List<Song>();

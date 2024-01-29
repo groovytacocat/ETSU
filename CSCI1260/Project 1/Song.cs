@@ -27,8 +27,8 @@ namespace PlaylistManager
             return $"Song Name: {this.name}\n" +
                 $"Artist: {this.artist}\n" +
                 $"Duration: {this.songLength}\n" +
-                $"Album: {this.album.AlbumName}\n" +
-                $"Genre: {this.genre}";
+                $"Genre: {this.genre}\n" +
+                $"\nAlbum Info:\n{this.album.ToString()}";
         }
 
         public Song(string inName, int inLength, string inartist, Album inAlbum, Genre inGenre)
@@ -40,7 +40,14 @@ namespace PlaylistManager
             this.genre = inGenre;
         }
 
-        public Song() : this(String.Empty, 0, String.Empty, new Album(), Genre.Pop) { }
+        /// <summary>
+        /// Constructor for <see cref="Song"/> that does not have an Album
+        /// </summary>
+        /// <param name="inName">Name of Song</param>
+        /// <param name="inLength">Length in seconds of song</param>
+        /// <param name="inArtist"Name of Artist></param>
+        /// <param name="inGenre">Genre of song</param>
+        public Song(string inName, int inLength, string inArtist, Genre inGenre) : this(inName, inLength, inArtist, new Album(), inGenre) { }
     }
 }
 
