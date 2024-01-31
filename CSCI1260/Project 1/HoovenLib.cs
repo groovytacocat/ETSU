@@ -1,7 +1,7 @@
 ﻿namespace MyDLL
 {
 
-    public class CSCI1250
+    public class HoovenLib
     {
         //Generic Parse method implemented by IParsable<T>
         public static T Parse<T>(string s, IFormatProvider provider) where T : IParsable<T>
@@ -66,11 +66,11 @@
         /// Takes a min and max argument and compares user input to these values.
         /// Displays error message if input is not within the upper/lower bounds
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="prompt">String to prompt user for input</param>
-        /// <param name="errorMessage">String displayed when parse failed or input not within bounds</param>
-        /// <param name="min">Minimum acceptable value</param>
-        /// <param name="max">Maximum acceptable value</param>
+        /// <typeparam Name="T"></typeparam>
+        /// <param Name="prompt">String to prompt user for input</param>
+        /// <param Name="errorMessage">String displayed when parse failed or input not within bounds</param>
+        /// <param Name="min">Minimum acceptable value</param>
+        /// <param Name="max">Maximum acceptable value</param>
         /// <returns>A number of type T that is within the provided boundary</returns>
         public static T Validate<T>(string prompt, string errorMessage, T min, T max) where T : IParsable<T>, IComparable<T>
         {
@@ -125,9 +125,9 @@
         /// <summary>
         /// Generic that swaps the valuables of 2 variables
         /// </summary>
-        /// <typeparam name="T">Type of values being swapped</typeparam>
-        /// <param name="x">Value 1 to be swapped</param>
-        /// <param name="y">Value 2 to be swapped</param>
+        /// <typeparam Name="T">Type of values being swapped</typeparam>
+        /// <param Name="x">Value 1 to be swapped</param>
+        /// <param Name="y">Value 2 to be swapped</param>
         public static void Swap<T> (ref T x, ref T y)
         {
             T swap = y;
