@@ -103,7 +103,7 @@ namespace MyDLL
         ///<summary>
         /// Method that returns a boolean to be used when prompting a user if they would like to repeat a program/method/action
         /// Only accepts y, Y, n, or N as values
-        /// Returns true for user input of y/Y 
+        /// Returns true for user input of Y/y 
         ///</summary>
         public static bool Repeat(string prompt, string errorMessage)
         {
