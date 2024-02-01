@@ -64,7 +64,6 @@ namespace PlaylistManager
 
         /// <summary>
         /// Shuffles the elements of the <see cref="List{T}"/>
-        /// Implementation based on Fisher-Yates shuffle Algorithm
         /// </summary>
         public void Shuffle()
         {
@@ -89,7 +88,7 @@ namespace PlaylistManager
         /// <returns><see cref="String"/> containing the <see cref="Playlist"/>'s information</returns>
         public override string ToString()
         {
-            string output = $"{this.title}\n";
+            string output = $"Name: {this.title}\n";
 
             foreach (Song song in this.songList)
             {

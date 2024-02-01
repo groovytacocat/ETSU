@@ -1,4 +1,4 @@
-﻿/**
+﻿/*
 *--------------------------------------------------------------------
 * File Name: Program.cs
 * Project Name: Playlist Manager
@@ -19,7 +19,7 @@ class Program
 {
     static void Main(string[] args)
     {
-
+        
         int userChoice;
         List<Album> discography = new List<Album>();
         List<Playlist> userPlaylists = new List<Playlist>();
@@ -27,8 +27,18 @@ class Program
 
         Console.WriteLine("Welcome to Playlist Manager");
 
-        userPlaylists.Add(new Playlist("test"));
-
+        ///<summary>
+        /// Do-While Loop that uses <see cref="DisplayMenu()"/> to show user the Main Menu
+        /// Makes liberal use of <see cref="HoovenLib.Validate{T}"/> methods to prompt user for various input and performs validation to ensure
+        /// that input is realistic and proper.
+        ///
+        /// Allows the user to make <see cref="Album"/>s, <see cref="Song"/>s, and <see cref="Playlist"/>s
+        /// This will not allow a <see cref="Playlist"/> to be created until there is an <see cref="Album"/> or <see cref="Song"/>s that have been added
+        ///
+        /// If User wishes to get more information on any of the above it will display the item's relevant <see cref="ToString()"/> method.
+        ///
+        /// Additionally once a <see cref="Playlist"/> has been created allows user to view all <see cref="Playlist"/>s, and shuffle the order if desired
+        /// </summary>
         do
         {
             DisplayMenu();
@@ -51,14 +61,15 @@ class Program
                     }
                     else
                     {
+                        Console.WriteLine();
                         for(int i = 0;i < discography.Count;i++)
                         {
-                            Console.WriteLine($"{i + 1}. {discography[i].AlbumName}");
+                            Console.WriteLine($"{i + 1}. {discography[i].Name}");
                         }
 
-                        int albumChoice = HoovenLib.Validate<int>("Which album would you like more info on: ", $"Please make a valid choice between 1 and {discography.Count} ", 1, discography.Count) - 1;
+                        int albumChoice = HoovenLib.Validate<int>("\nWhich album would you like more info on: ", $"Please make a valid choice between 1 and {discography.Count} ", 1, discography.Count) - 1;
 
-                        Console.WriteLine(discography[albumChoice].ToString());
+                        Console.WriteLine($"\n{discography[albumChoice].ToString()}");
                     }
                     break;
                 case 3:
@@ -84,11 +95,13 @@ class Program
                     }
                     break;
                 case 5:
-                    int numPlist = HoovenLib.Validate<int>("How many playlists would you like to make: ", "Please enter a positive integer. ", 1, 100);
-
-                    for(int i = 0; i < numPlist; i++)
+                    if(masterList.Count == 0)
                     {
-                        //TODO REWORK CREATE PLAYLIST
+                        Console.WriteLine("\nCannot make a playlist until you have some songs!");
+                    }
+                    else
+                    {
+                        userPlaylists.Add(CreatePlaylist(masterList));
                     }
                     break;
                 case 6:
@@ -120,7 +133,7 @@ class Program
                         if(HoovenLib.Repeat("Would you like to shuffle this playlist (Y/N)? ", "Please enter Y/y for Yes or N/n for No. "))
                         {
                             userPlaylists[playChoice].Shuffle();
-                            userPlaylists[playChoice].ToString();
+                            Console.WriteLine(userPlaylists[playChoice].ToString());
                         }
                     }
                     break;
@@ -158,7 +171,16 @@ class Program
 
                                     int songToAdd = HoovenLib.Validate<int>("Which song would you like to add: ", $"Please enter a valid choice between 1 and {masterList.Count}. ", 1, masterList.Count) - 1;
 
-                                    userPlaylists[playChoice].AddSong(masterList[songToAdd]);
+                                    if (userPlaylists[playChoice].TrackList.Contains(masterList[songToAdd]))
+                                    {
+                                        Console.WriteLine($"\n{masterList[songToAdd].Name} already in playlist\n");
+                                    }
+                                    else
+                                    {
+                                        userPlaylists[playChoice].AddSong(masterList[songToAdd]);
+                                    }
+
+                                    Console.WriteLine(userPlaylists[playChoice].ToString());
                                 }
                             }
                             else
@@ -177,6 +199,8 @@ class Program
                                     int songToRemove = HoovenLib.Validate<int>("Which song would you like to remove: ", $"Please enter a valid choice between 1 and {masterList.Count}. ", 1, masterList.Count) - 1;
 
                                     userPlaylists[playChoice].AddSong(masterList[songToRemove]);
+
+                                    Console.WriteLine(userPlaylists[playChoice].ToString());
                                 }
                             }
                         } while (HoovenLib.Repeat("\nWould you like to continue editing (Y/N): ", "Please enter Y/y for Yes or N/n for No. "));
@@ -190,22 +214,8 @@ class Program
         } while (userChoice != 8);
 
     } //END MAIN
-    /*
-        1. Add Album                    DONE
-        2. View Albums                  DONE
-            1. View Info on Album       DONE
-        3. Add Song                     DONE
-        4. View All Songs               DONE
-            1. View info on Song        DONE
-        5. Create Playlist          
-        6. View Playlists               DONE
-            1. Get Playlist Info        DONE
-                i. Shuffle Playlist     DONE
-        7. Edit Playlist(s)
-            1. Add Song(s)
-            2. Remove Song(s)
-        8. Exit                         DONE
-     */
+
+    #region DisplaySongs()
     /// <summary>
     /// Displays all <see cref="Song"/>s that are present in the <see cref="List{T}"/> of <see cref="Song"/>s provided
     /// </summary>
@@ -224,8 +234,10 @@ class Program
                 Console.WriteLine($"{i + 1}. {allSongs[i].Name} - {allSongs[i].Artist}");
             }
         }
-    }//END DisplaySongs()
+    }
+    #endregion
 
+    #region CreateSong()
     /// <summary>
     /// Creates a <see cref="Song"/> by prompting user for necessary information. Similar to <see cref="CreateAlbum(List{Song})"/> and <see cref="CreatePlaylist(List{Album})"/>
     /// **This is for songs that do not have an album. 
@@ -236,7 +248,7 @@ class Program
     {
         Genre genre;
 
-        Console.Write("What is the name of the Song: ");
+        Console.Write("\nWhat is the name of the Song: ");
         string songName = Console.ReadLine();
 
         int songLength = HoovenLib.Validate<int>("What is the length of the song (in seconds): ", "Please enter a valid positive integer. ");
@@ -271,15 +283,16 @@ class Program
         }
 
         return new Song(songName, songLength, songArtist, genre);
-    }//END CreateSong()
+    }
+    #endregion
 
+    #region Song CreatePlaylist()
     /// <summary>
-    /// Creates a <see cref="Playlist"/> by prompting the user for the necessary information, similar to <see cref="CreateAlbum(List{Song})"/>
-    /// Requires passing in an <see cref="Album"/>
+    /// Method to create a playlist by selecting individual songs, rather than from albums
     /// </summary>
-    /// <param name="albumCollections">Collection of <see cref="Album"/s to display all <see cref="Song"/>s to the user></param>
-    /// <returns>a user created <see cref="Playlist"/></returns>
-    public static Playlist CreatePlaylist(List<Album> albumCollections)
+    /// <param name="songCollection"><see cref="List{T}"/> of <see cref="Song"/>s</param>
+    /// <returns>a <see cref="Playlist"/> with the <see cref="Song"/>s added by the user</returns>
+    public static Playlist CreatePlaylist(List<Song> songCollection)
     {
         Console.Write("\nName your playlist: ");
         string name = Console.ReadLine();
@@ -288,58 +301,29 @@ class Program
 
         do
         {
-            for(int i = 0; i < albumCollections.Count; i++)
+            for (int i = 0; i < songCollection.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {albumCollections[i]}");
+                Console.WriteLine($"{i + 1}. {songCollection[i].Name} - {songCollection[i].Artist}");
             }
 
-            int albumChoice = HoovenLib.Validate<int>("\nSelect an Album to add songs from: ", $"Please enter a positive integer between 1 and {albumCollections.Count}", 1, albumCollections.Count) - 1;
+            int songChoice = HoovenLib.Validate<int>("\nSelect a Song to add: ", $"Please enter a positive integer between 1 and {songCollection.Count}", 1, songCollection.Count) - 1;
 
-            int addChoice = HoovenLib.Validate<int>("Would you like to:\n1. Add All songs from this album to the playlist\n2. Add select songs\nChoice: ", "Invalid choice. ", 1, 2);
-
-            if(addChoice == 1)
+            if (playlist.TrackList.Contains(songCollection[songChoice]))
             {
-                foreach(Song s in albumCollections[albumChoice].TrackList)
-                {
-                    if(!playlist.TrackList.Contains(s))
-                    {
-                        Console.WriteLine($"\n{s.Name} added to playlist!");
-                        playlist.TrackList.Add(s);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"\n{s.Name} is already in your playlist");
-                    }
-                }
+                Console.WriteLine($"\n{songCollection[songChoice].Name} already in playlist!");
             }
             else
             {
-                Console.WriteLine();
-                for (int i = 0; i < albumCollections[albumChoice].TrackList.Count; i++)
-                {
-                    Console.WriteLine($"{i + 1}. {albumCollections[albumChoice].TrackList[i].Name}");
-                }
-
-                Console.Write("Which song would you like to add: ");
-                int songChoice = HoovenLib.Validate<int>("Which song would you like to add: ", $"Please enter a positive integer between 1 and {albumCollections[albumChoice].TrackList.Count}\n", 1, albumCollections[albumChoice].TrackList.Count) - 1;
-
-                Song songToAdd = albumCollections[albumChoice].TrackList[songChoice];
-
-                if (playlist.TrackList.Contains(songToAdd))
-                {
-                    Console.WriteLine("That song is already in your playlist!");
-                }
-                else
-                {
-                    Console.WriteLine($"\n{songToAdd.Name} added to playlist!");
-                    playlist.AddSong(songToAdd);
-                }
+                Console.WriteLine($"\n{songCollection[songChoice].Name} added to playlist!");
+                playlist.AddSong(songCollection[songChoice]);
             }
-        } while (HoovenLib.Repeat("Would you like to add another? Y/N: ", "Please enter Y/y for Yes or N/n for No "));
+        } while (HoovenLib.Repeat("\nWould you like to add another? Y/N: ", "Please enter Y/y for Yes or N/n for No "));
 
         return playlist;
-    }//END CreatePlaylist()
+    }
+    #endregion
 
+    #region CreateAlbum()
     /// <summary>
     /// Creates an <see cref="Album"/> by prompting the User for all necessary input, and will add the <see cref="Song"/>s to the Master list 
     /// </summary>
@@ -389,6 +373,9 @@ class Program
             case "country":
                 genre = Genre.Country;
                 break;
+            case "other":
+                genre = Genre.Other;
+                break;
             default:
                 Console.WriteLine("Your selected genre was not listed and will be set as 'Other'");
                 genre = Genre.Other;
@@ -397,7 +384,7 @@ class Program
 
         Album album = new Album(albumName, bandName, band, releaseDate);
 
-        numSongs = HoovenLib.Validate<int>("\nHow many songs are you adding to this album: ", "Please enter a valid integer from 1 to 30", 1, 30);
+        numSongs = HoovenLib.Validate<int>("\nHow many songs are you adding to this album: ", "Please enter a valid integer from 1 to 30. ", 1, 30);
 
         for (int i = 0; i < numSongs; i++)
         {
@@ -407,15 +394,17 @@ class Program
             Console.Write("\nEnter the song name: ");
             songName = Console.ReadLine();
 
-            duration = HoovenLib.Validate<int>("Enter the song's duration (in seconds): ", "Please enter a valid integer from 1 to 600", 1, 600);
+            duration = HoovenLib.Validate<int>("Enter the song's duration (in seconds): ", "Please enter a valid integer from 1 to 600. ", 1, 600);
 
             Song s = new Song(songName, duration, album.BandName, album, genre);
 
+            masterList.Add(s);
             album.AddSong(s);
         }
 
         return album;
-    } //END CreateAlbum()
+    }
+    #endregion
 
     /// <summary>
     /// Displays a string representing Main Menu options.

@@ -25,8 +25,7 @@ namespace PlaylistManager
         public string BandName { get; private set; }
         public int ReleaseDate { get; private set; }
         public List<Song> TrackList { get; private set;  }
-        public string AlbumName { get; private set; }
-
+        public string Name { get { return this.title; } }
 
         /// <inheritdoc />
         public override List<Song> AddSong(Song song)
@@ -54,9 +53,16 @@ namespace PlaylistManager
         /// <returns><see cref="String"/> containing information on the album</returns>
         public override string ToString()
         {
-            string output = $"Album Name: {this.title}\nBand: {this.BandName}\nRelease Date: {this.ReleaseDate}\nTrack List:\n";
+            string output = $"Album Name: {this.title}\nBand: {this.BandName} Members: ";
 
-            foreach(Song s in  songList)
+            foreach (string member in BandMembers)
+            {
+                output += $"{member} ";
+            }
+
+            output += $"\nRelease Date: {this.ReleaseDate}\nTracklist: ";
+
+            foreach (Song s in  songList)
             {
                 output += $"\t{s.Name}\n";
             }
