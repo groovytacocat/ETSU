@@ -41,6 +41,11 @@ namespace PlaylistManager
         /// <returns>Returns a <see cref="List{Song}"/></returns>
         public abstract List<Song> AddSong(Song song);
 
+        /// <summary>
+        /// Prints the information of a <see cref="Song"/> in the <see cref="List{T}"/> of <see cref="Song"/>s
+        /// </summary>
+        /// <param name="songNum"><see cref="int"/> representing a <see cref="Song"/>'s index value in the <see cref="List{T}"/></param>
+        /// <returns><see cref="String"/> representing that <see cref="Song"/>'s information</returns>
         public abstract string GetSong(int songNum);
 
         /// <summary>

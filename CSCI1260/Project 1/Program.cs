@@ -27,6 +27,12 @@ class Program
 
         Console.WriteLine("Welcome to Playlist Manager");
 
+        if(HoovenLib.Repeat("\nMr. Buchanan (or Grader) would you like some pre-existing data populated? (Y/N): ", "Please enter Y/y for yes or N/n for no. "))
+        {
+            Console.WriteLine("\nCreating some songs, albums, and playlists for you\n");
+            MrBuchanan(masterList, discography, userPlaylists);
+        }
+
         ///<summary>
         /// Do-While Loop that uses <see cref="DisplayMenu()"/> to show user the Main Menu
         /// Makes liberal use of <see cref="HoovenLib.Validate{T}"/> methods to prompt user for various input and performs validation to ensure
@@ -73,7 +79,7 @@ class Program
                     }
                     break;
                 case 3:
-                    int numSongs = HoovenLib.Validate<int>("How many songs would you like to add: ", "Please enter a positive integer ", 1, 100);
+                    int numSongs = HoovenLib.Validate<int>("\nHow many songs would you like to add: ", "Please enter a positive integer ", 1, 100);
 
                     for(int i = 0; i < numSongs; i++)
                     {
@@ -89,9 +95,9 @@ class Program
                     {
                         DisplaySongs(masterList);
                         
-                        int songChoice = HoovenLib.Validate<int>("Which song would you like more info on: ", $"Please enter a valid choice between 1 and {masterList.Count}", 1, masterList.Count) - 1;
+                        int songChoice = HoovenLib.Validate<int>("\nWhich song would you like more info on: ", $"Please enter a valid choice between 1 and {masterList.Count}. ", 1, masterList.Count) - 1;
 
-                        Console.WriteLine(masterList[songChoice].ToString());
+                        Console.WriteLine($"\n{masterList[songChoice].ToString()}");
                     }
                     break;
                 case 5:
@@ -117,23 +123,23 @@ class Program
                             Console.WriteLine($"{i + 1}. {userPlaylists[i].Name}");
                         }
 
-                        int playChoice = HoovenLib.Validate<int>("Which playlist would you like more information on: ", $"Please enter a valid choice between 1 and {userPlaylists.Count}. ", 1, userPlaylists.Count) - 1;
+                        int playChoice = HoovenLib.Validate<int>("\nWhich playlist would you like more information on: ", $"Please enter a valid choice between 1 and {userPlaylists.Count}. ", 1, userPlaylists.Count) - 1;
 
-                        Console.WriteLine(userPlaylists[playChoice].ToString());
+                        Console.WriteLine($"\n{userPlaylists[playChoice].ToString()}");
 
-                        if(HoovenLib.Repeat("Would you like information on any of these songs (Y/N)? ", "Please enter Y/y for Yes or N/n for No. "))
+                        while (HoovenLib.Repeat("\nWould you like information on any of these songs (Y/N)? ", "Please enter Y/y for Yes or N/n for No. "))
                         {
                             DisplaySongs(userPlaylists[playChoice].TrackList);
 
                             int songChoice = HoovenLib.Validate<int>("Which song would you like info about: ", "Please enter a choice between 1 and {userPlaylists[playChoice].TrackList.Count}. ", 1, userPlaylists[playChoice].TrackList.Count) - 1;
 
-                            Console.WriteLine(userPlaylists[playChoice].GetSong(songChoice));
+                            Console.WriteLine($"\n{userPlaylists[playChoice].GetSong(songChoice)}");
                         }
 
-                        if(HoovenLib.Repeat("Would you like to shuffle this playlist (Y/N)? ", "Please enter Y/y for Yes or N/n for No. "))
+                        while(HoovenLib.Repeat("\nWould you like to shuffle this playlist (Y/N)? ", "Please enter Y/y for Yes or N/n for No. "))
                         {
                             userPlaylists[playChoice].Shuffle();
-                            Console.WriteLine(userPlaylists[playChoice].ToString());
+                            Console.WriteLine($"\n{userPlaylists[playChoice].ToString()}");
                         }
                     }
                     break;
@@ -164,12 +170,13 @@ class Program
                                 }
                                 else
                                 {
+                                    Console.WriteLine();
                                     for (int i = 0; i < masterList.Count; i++)
                                     {
                                         Console.WriteLine($"{i + 1}. {masterList[i].Name} - {masterList[i].Artist}");
                                     }
 
-                                    int songToAdd = HoovenLib.Validate<int>("Which song would you like to add: ", $"Please enter a valid choice between 1 and {masterList.Count}. ", 1, masterList.Count) - 1;
+                                    int songToAdd = HoovenLib.Validate<int>("\nWhich song would you like to add: ", $"Please enter a valid choice between 1 and {masterList.Count}. ", 1, masterList.Count) - 1;
 
                                     if (userPlaylists[playChoice].TrackList.Contains(masterList[songToAdd]))
                                     {
@@ -178,9 +185,10 @@ class Program
                                     else
                                     {
                                         userPlaylists[playChoice].AddSong(masterList[songToAdd]);
+                                        Console.WriteLine($"\n{masterList[songToAdd].Name} added to playlist!");
                                     }
 
-                                    Console.WriteLine(userPlaylists[playChoice].ToString());
+                                    Console.WriteLine($"\n{userPlaylists[playChoice].ToString()}");
                                 }
                             }
                             else
@@ -191,6 +199,7 @@ class Program
                                 }
                                 else
                                 {
+                                    Console.WriteLine();
                                     for (int i = 0; i < masterList.Count; i++)
                                     {
                                         Console.WriteLine($"{i + 1}. {masterList[i].Name} - {masterList[i].Artist}");
@@ -198,9 +207,9 @@ class Program
 
                                     int songToRemove = HoovenLib.Validate<int>("Which song would you like to remove: ", $"Please enter a valid choice between 1 and {masterList.Count}. ", 1, masterList.Count) - 1;
 
-                                    userPlaylists[playChoice].AddSong(masterList[songToRemove]);
+                                    userPlaylists[playChoice].RemoveSong(masterList[songToRemove]);
 
-                                    Console.WriteLine(userPlaylists[playChoice].ToString());
+                                    Console.WriteLine($"\n{userPlaylists[playChoice].ToString()}");
                                 }
                             }
                         } while (HoovenLib.Repeat("\nWould you like to continue editing (Y/N): ", "Please enter Y/y for Yes or N/n for No. "));
@@ -286,7 +295,7 @@ class Program
     }
     #endregion
 
-    #region Song CreatePlaylist()
+    #region CreatePlaylist()
     /// <summary>
     /// Method to create a playlist by selecting individual songs, rather than from albums
     /// </summary>
@@ -413,4 +422,63 @@ class Program
     {
         Console.WriteLine($"\n1. Add Album(s)\n2. View Album(s)\n3. Add Songs\n4. View Songs\n5. Create Playlist(s)\n6. View Playlist(s)\n7. Edit Playlist(s)\n8. Exit");
     }
+
+    #region MrBuchanan
+    /// <summary>
+    /// Creates an Album representing Olivia Rodrigo's most recent album GUTS, then creates all the songs on that album and adds them in
+    /// Creates Beethoven's Fur Elise as a song
+    /// Creates a 'Demo' playlist containing a few songs from the GUTS album and Fur Elise
+    /// </summary>
+    /// <param name="allSongs"><see cref="List{T}"/> containing all <see cref="Song"/>s</param>
+    /// <param name="allAlbums"><see cref="List{T}"/> containing all <see cref="Album"/>s</param>
+    /// <param name="allPlays"><see cref="List{T}"/> containing all <see cref="Playlist"/>s</param>
+    public static void MrBuchanan(List<Song> allSongs, List<Album> allAlbums, List<Playlist> allPlays)
+    {
+        Album testing = new Album("GUTS", "Olivia Rodrigo", new List<string>(), 2023);
+
+        Song firstSong = new Song("vampire", 219, "Olivia Rodrigo", testing, Genre.Pop);
+        Song secondSong = new Song("Lacy", 177, "Olivia Rodrigo", testing, Genre.Pop);
+        Song thirdSong = new Song("Logical", 231, "Olivia Rodrigo", testing, Genre.Pop);
+        Song fourthSong = new Song("All-American Bitch", 165, "Olivia Rodrigo", testing, Genre.Pop);
+        Song fifthSong = new Song("Ballad of a Homeschooled Girl", 203, "Olivia Rodrigo", testing, Genre.Pop);
+        Song sixthSong = new Song("Bad Idea Right?", 184, "Olivia Rodrigo", testing, Genre.Pop);
+        Song seventhSong = new Song("Making the Bed", 198, "Olivia Rodrigo", testing, Genre.Pop);
+        Song eigthSong = new Song("Get Him Back!", 211, "Olivia Rodrigo", testing, Genre.Pop);
+        Song ninthSong = new Song("Love is embarrassing", 154, "Olivia Rodrigo", testing, Genre.Pop);
+        Song tenthSong = new Song("The Grudge", 189, "Olivia Rodrigo", testing, Genre.Pop);
+        Song eleventhSong = new Song("Pretty isn't Pretty", 199, "Olivia Rodrigo", testing, Genre.Pop);
+        Song twelfthSong = new Song("Teenage Dream", 222, "Olivia Rodrigo", testing, Genre.Pop);
+        Song lastSong = new Song("Fur Elise", 180, "Beethoven", Genre.Other);
+
+        Playlist demo = new Playlist("Demo");
+
+        testing.AddSong(firstSong);
+        testing.AddSong(secondSong);
+        testing.AddSong(thirdSong);
+        testing.AddSong(fourthSong);
+        testing.AddSong(fifthSong);
+        testing.AddSong(sixthSong);
+        testing.AddSong(seventhSong);
+        testing.AddSong(eigthSong);
+        testing.AddSong(ninthSong);
+        testing.AddSong(tenthSong);
+        testing.AddSong(eleventhSong);
+        testing.AddSong(twelfthSong);
+
+        foreach(Song s in testing.TrackList)
+        {
+            allSongs.Add(s);
+        }
+
+        allSongs.Add(lastSong);
+
+        allAlbums.Add(testing);
+
+        demo.AddSong(firstSong);
+        demo.AddSong(thirdSong);
+        demo.AddSong(lastSong);
+
+        allPlays.Add(demo);
+    }
+    #endregion
 }

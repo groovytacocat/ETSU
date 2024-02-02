@@ -20,11 +20,30 @@ namespace PlaylistManager
     /// by the same artist.
     /// </summary>
     public class Album : SongList
-    { 
+    {
+        /// <summary>
+        /// <see cref="List{T}"/> of <see cref="String"/>s containing names of Band Members (if any)
+        /// </summary>
         public List<string> BandMembers { get; private set; }
+
+        /// <summary>
+        /// <see cref="String"/> representation of Band Name
+        /// </summary>
         public string BandName { get; private set; }
+
+        /// <summary>
+        /// <see cref="int"/> representing the year released
+        /// </summary>
         public int ReleaseDate { get; private set; }
-        public List<Song> TrackList { get; private set;  }
+
+        /// <summary>
+        /// <see cref="List{T}"/> of <see cref="Song"/>s for the <see cref="Album"/>
+        /// </summary>
+        public List<Song> TrackList { get { return this.songList; }  }
+
+        /// <summary>
+        /// <see cref="String"/> representation of the Name
+        /// </summary>
         public string Name { get { return this.title; } }
 
         /// <inheritdoc />
@@ -60,7 +79,7 @@ namespace PlaylistManager
                 output += $"{member} ";
             }
 
-            output += $"\nRelease Date: {this.ReleaseDate}\nTracklist: ";
+            output += $"\nRelease Date: {this.ReleaseDate}\nTracklist:\n";
 
             foreach (Song s in  songList)
             {
@@ -84,6 +103,10 @@ namespace PlaylistManager
             this.BandName = bandName;
             this.ReleaseDate = releaseDate;
         }
+
+        /// <summary>
+        /// Default Constructor creates an album with no name/band members for <see cref="Song"/>s that aren't tied to an album
+        /// </summary>
         public Album() : this("No Album", "N/A", new List<string>(), 0) { }
     }
 }
