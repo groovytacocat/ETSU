@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Battleship
 {
     /// <summary>
-    /// Struct representing the X and Y coordinates 
+    /// Struct representing the X and Y coordinates of a <see cref="Ship"/>
     /// </summary>
     internal struct Coord2D
     {
