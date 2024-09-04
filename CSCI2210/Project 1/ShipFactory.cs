@@ -141,4 +141,6 @@ namespace Battleship
     How to handle the nested try catch's? 
 
     Are my class constructors ok/Is it ok to use virtual methods in my abstract class?
+
+    How much data validation necessary?
  */

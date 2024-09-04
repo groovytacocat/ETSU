@@ -81,11 +81,10 @@ namespace Battleship
                             if (s.IsDead())
                             {
                                 lives--;
-                            }
-
-                            if (lives == 0)
-                            {
-                                gameDone = true;
+                                if(lives == 0)
+                                {
+                                    gameDone = true;
+                                }
                             }
                         }
                     }
