@@ -1,0 +1,15 @@
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/bin/Debug/net8.0/Battleship
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/bin/Debug/net8.0/Battleship.deps.json
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/bin/Debug/net8.0/Battleship.runtimeconfig.json
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/bin/Debug/net8.0/Battleship.dll
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/bin/Debug/net8.0/Battleship.pdb
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/Battleship.GeneratedMSBuildEditorConfig.editorconfig
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/Battleship.AssemblyInfoInputs.cache
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/Battleship.AssemblyInfo.cs
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/Battleship.csproj.CoreCompileInputs.cache
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/Battleship.sourcelink.json
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/Battleship.dll
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/refint/Battleship.dll
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/Battleship.pdb
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/Battleship.genruntimeconfig.cache
+/Users/adamhooven/gitStuff/ETSU/CSCI2210/Project 1/obj/Debug/net8.0/ref/Battleship.dll
