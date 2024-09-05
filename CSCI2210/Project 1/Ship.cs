@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace Battleship
@@ -108,14 +109,7 @@ namespace Battleship
 
             for(int i = 0; i < this.Length; i++)
             {
-                if(direction == DirectionType.Vertical)
-                {
-                    this.Points[i] = new Coord2D(position.x, position.y + i);
-                }
-                else
-                {
-                    this.Points[i] = new Coord2D(position.x + i, position.y);
-                }
+                this.Points[i] = (direction == DirectionType.Vertical) ? new Coord2D(position.x, position.y + i) : new Coord2D(position.x + i, position.y);
             }
         }
     }

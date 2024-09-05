@@ -39,10 +39,10 @@ namespace Battleship
                     Fleet = shipFactory.ParseShipFile(args[0]);
                 }
 
-                if(Fleet is null)
-                {
-                    throw new Exception("File not found/cannot be opened");
-                }
+                //if(Fleet is null)
+                //{
+                //    throw new Exception("File not found/cannot be opened");
+                //}
 
                 string input = String.Empty;
                 bool gameDone = false;
@@ -56,10 +56,7 @@ namespace Battleship
 
                     if (input.ToUpper().Equals("INFO"))
                     {
-                        foreach (Ship s in Fleet)
-                        {
-                            Console.WriteLine($"\nName: {s.GetName()}\n{s.GetInfo()}");
-                        }
+                        ShipInfo(Fleet);
                     }
                     else if (Regex.IsMatch(input, @"\d+, \d+"))
                     {
@@ -68,25 +65,9 @@ namespace Battleship
 
                         Coord2D guess = new Coord2D(x, y);
 
-                        foreach (Ship s in Fleet)
-                        {
-                            if (s.CheckIfHit(guess))
-                            {
-                                s.TakeDamage(guess);
-                            }
-                        }
+                        PlayerGuess(guess, Fleet);
 
-                        foreach(Ship s in Fleet)
-                        {
-                            if (s.IsDead())
-                            {
-                                lives--;
-                                if(lives == 0)
-                                {
-                                    gameDone = true;
-                                }
-                            }
-                        }
+                        gameDone = GameState(Fleet);
                     }
                     else if (input.ToUpper().Equals("EXIT"))
                     {
@@ -105,9 +86,54 @@ namespace Battleship
             }
             finally
             {
-                Console.WriteLine("Thanks for playing");
+                Console.WriteLine("\nThanks for playing");
             }
         }
         #endregion
+
+        /// <summary>
+        /// Method to print info about all <see cref="Ship"/> objects in <see cref="Array"/>
+        /// </summary>
+        /// <param name="ships"><see cref="Array"/> of <see cref="Ship"/> objects</param>
+        public static void ShipInfo(Ship[] ships)
+        {
+            foreach(Ship ship in ships)
+            {
+                Console.WriteLine($"\nName: {ship.GetName()}\n{ship.GetInfo()}");
+            }
+        }
+
+        /// <summary>
+        /// Method to take players guess and apply damage if a hit was successful
+        /// </summary>
+        /// <param name="guess"><see cref="Coord2D"/> representing player guess</param>
+        /// <param name="ships"><see cref="Array"/> of <see cref="Ship"/> objects in game</param>
+        public static void PlayerGuess(Coord2D guess, Ship[] ships)
+        {
+            foreach(Ship s in ships)
+            {
+                if (s.CheckIfHit(guess)) s.TakeDamage(guess);
+            }
+        }
+
+        /// <summary>
+        /// Method to determine game state. Checks all <see cref="Ship"/> objects for status. If dead decrements total ships from game, once 0 game is completed
+        /// </summary>
+        /// <param name="ships"><see cref="Array"/> of <see cref="Ship"/> objects</param>
+        /// <returns>True if all <see cref="Ship"/>s in <see cref="Array"/> are dead</returns>
+        public static bool GameState(Ship[] ships)
+        {
+            int lives = ships.Length;
+
+            foreach(Ship ship in ships)
+            {
+                if(ship.IsDead())
+                {
+                    lives--;
+                }
+            }
+
+            return lives == 0;
+        }
     }
 }
