@@ -111,6 +111,7 @@ namespace Battleship
             {
                 this.Points[i] = (direction == DirectionType.Vertical) ? new Coord2D(position.x, position.y + i) : new Coord2D(position.x + i, position.y);
             }
+            
         }
     }
 }

@@ -90,9 +90,9 @@ namespace Battleship
 
             if (len >= 6 || len <= 0) throw new Exception("LENGTH BAD");
 
-            if (vals[2].Trim().ToLower().Equals("h") && (int.Parse(vals[3].Trim()) + len >= 10)) throw new Exception("HORIZONTAL LENGTH BAD");
+            if (vals[2].Trim().ToLower().Equals("h") && (int.Parse(vals[3].Trim()) + len >= 10 || int.Parse(vals[3].Trim()) <= 0)) throw new Exception("HORIZONTAL LENGTH BAD");
 
-            if (vals[2].Trim().ToLower().Equals("v") && (int.Parse(vals[4].Trim()) + len >= 10)) throw new Exception("VERTICAL LENGTH BAD");
+            if (vals[2].Trim().ToLower().Equals("v") && (int.Parse(vals[4].Trim()) + len >= 10 || int.Parse(vals[4].Trim() <= 0))) throw new Exception("VERTICAL LENGTH BAD");
 
             return true;
         }
