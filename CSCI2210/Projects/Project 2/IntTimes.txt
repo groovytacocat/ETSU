@@ -1,0 +1,33 @@
+/home/groovy/Proj2/SortClasses/SortClasses.cs(3,29): warning CS0436: The type 'ISort' in '/home/groovy/Proj2/SortClasses/ISort.cs' conflicts with the imported type 'ISort' in 'SortClasses, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/ISort.cs'. [/home/groovy/Proj2/Proj2.csproj]
+/home/groovy/Proj2/SortClasses/SortClasses.cs(22,34): warning CS0436: The type 'ISort' in '/home/groovy/Proj2/SortClasses/ISort.cs' conflicts with the imported type 'ISort' in 'SortClasses, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/ISort.cs'. [/home/groovy/Proj2/Proj2.csproj]
+/home/groovy/Proj2/Program.cs(18,13): warning CS0436: The type 'RecursiveSort' in '/home/groovy/Proj2/SortClasses/SortClasses.cs' conflicts with the imported type 'RecursiveSort' in 'SortClasses, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/SortClasses.cs'. [/home/groovy/Proj2/Proj2.csproj]
+/home/groovy/Proj2/Program.cs(18,41): warning CS0436: The type 'RecursiveSort' in '/home/groovy/Proj2/SortClasses/SortClasses.cs' conflicts with the imported type 'RecursiveSort' in 'SortClasses, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/SortClasses.cs'. [/home/groovy/Proj2/Proj2.csproj]
+/home/groovy/Proj2/Program.cs(19,13): warning CS0436: The type 'IterSort' in '/home/groovy/Proj2/SortClasses/SortClasses.cs' conflicts with the imported type 'IterSort' in 'SortClasses, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/SortClasses.cs'. [/home/groovy/Proj2/Proj2.csproj]
+/home/groovy/Proj2/Program.cs(19,37): warning CS0436: The type 'IterSort' in '/home/groovy/Proj2/SortClasses/SortClasses.cs' conflicts with the imported type 'IterSort' in 'SortClasses, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/SortClasses.cs'. [/home/groovy/Proj2/Proj2.csproj]
+/home/groovy/Proj2/Program.cs(64,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/groovy/Proj2/Proj2.csproj]
+/home/groovy/Proj2/Program.cs(87,27): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/groovy/Proj2/Proj2.csproj]
+File Being Loaded: AlmostInOrder_10.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: AlmostInOrder_100.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: AlmostInOrder_1000.txt
+Average Time Elapsed for Iterative Sorting
+3ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: AlmostInOrder_10000.txt
+Average Time Elapsed for Iterative Sorting
+417ms
+Average Time Elapsed for Recursive Sorting
+1ms
+
+File Being Loaded: AlmostInOrder_100000.txt
