@@ -23,7 +23,7 @@
     {
         public void Sort<T>(List<T> values) where T: IComparable<T>
         {
-
+            QuickSort<T>(values, 0, values.Count - 1);
         }
 
         public void QuickSort<T>(List<T> values, int low, int high) where T: IComparable<T>

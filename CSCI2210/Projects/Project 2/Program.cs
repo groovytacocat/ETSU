@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using SortClasses;
+using BookClass;
 
 namespace Proj2;
 
@@ -8,55 +9,72 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<int> test = new();
-        List<string> files = new();
+        List<string> intFiles = new List<string>();
+        List<string> bookFiles = new List<string>();
+        List<string> allFiles = new List<string>();
 
-        files = LoadTestFiles(args[0]);
+        allFiles = LoadTestFiles(args[0]);
 
-        foreach(string s in files)
+        foreach (string file in allFiles)
+        {
+            if (file.Contains("Ints"))
+            {
+                intFiles.Add(file);
+            }
+            else
+            {
+                bookFiles.Add(file);
+            }
+        }
+
+        RunTests<int>(intFiles);
+
+        RunTests<Book>(bookFiles);
+    }
+
+    public static void RunTests<T>(List<string> files) where T : IComparable<T>, IParsable<T>
+    {
+        foreach (string file in files)
         {
             RecursiveSort recSort = new RecursiveSort();
             IterSort iterSort = new IterSort();
 
-            Console.WriteLine($"File Being Loaded: {s}");
-            long iterTime = 0;
-            long recurseTime = 0;
+            Console.WriteLine($"File Being Loaded: {file}");
 
-            for(int i = 0; i < 5; i++)
-            {
-                Stopwatch watch = new Stopwatch();
-                test = LoadIntegerTestData($"TestData/Ints/{s}");
-                watch.Start();
-                iterSort.Sort<int>(test);
-                watch.Stop();
-
-                iterTime += watch.ElapsedMilliseconds;
-            }
-
+            long iterTime = Timer<T>(iterSort, file);
             long iterAvg = iterTime / 5;
-
             Console.WriteLine($"Average Time Elapsed for Iterative Sorting\n{iterAvg}ms");
 
-            for(int i = 0; i < 5; i++)
-            {
-                test = LoadIntegerTestData($"TestData/Ints/{s}");
-                Stopwatch watch = new Stopwatch();
-                watch.Start();
-                recSort.QuickSort<int>(test, 0, test.Count - 1);
-                watch.Stop();
-
-                recurseTime += watch.ElapsedMilliseconds;
-            }
-
+            long recurseTime = Timer<T>(recSort, file);
             long recurseAvg = recurseTime / 5;
-
             Console.WriteLine($"Average Time Elapsed for Recursive Sorting\n{recurseAvg}ms\n");
         }
+
     }
 
-    public static List<int> LoadIntegerTestData(string filePath)
+    public static long Timer<T>(ISort algo, string path) where T : IComparable<T>, IParsable<T>
     {
-        List<int> vals = new List<int>();
+        List<T> values = new List<T>();
+
+        long total = 0;
+
+        for (int i = 0; i < 5; i++)
+        {
+            values = LoadData<T>(path);
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            algo.Sort<T>(values);
+            watch.Stop();
+
+            total += watch.ElapsedMilliseconds;
+        }
+
+        return total;
+    }
+
+    public static List<string> LoadTestFiles(string filePath)
+    {
+        List<string> files = new();
 
         using (StreamReader sr = new StreamReader(filePath))
         {
@@ -65,31 +83,9 @@ class Program
             {
                 try
                 {
-                    vals.Add(int.Parse(line.Trim()));
-                }
-                catch(Exception e)
-                {
-                    Console.WriteLine($"Error: {e} had message: {e.Message}");
-                }
-            }
-        }
-
-        return vals;
-    }
-
-    public static List<string> LoadTestFiles(string filePath)
-    {
-        List<string> files = new();
-
-        using(StreamReader sr = new StreamReader(filePath))
-        {
-            string line;
-            while((line = sr.ReadLine()) != null)
-            {
-                try{
                     files.Add(line);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine($"Error: {e} has message - {e.Message}");
                 }
@@ -97,5 +93,26 @@ class Program
         }
 
         return files;
+    }
+
+    public static List<T> LoadData<T>(string path) where T : IParsable<T>
+    {
+        List<T> values = new List<T>();
+
+        using (StreamReader sr = new StreamReader(path))
+        {
+            string line;
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                T item = default(T);
+                if (T.TryParse(line, null, out item))
+                {
+                    values.Add(item);
+                }
+            }
+        }
+
+        return values;
     }
 }

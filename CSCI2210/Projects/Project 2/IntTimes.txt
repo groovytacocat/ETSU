@@ -31,3 +31,98 @@ Average Time Elapsed for Recursive Sorting
 1ms
 
 File Being Loaded: AlmostInOrder_100000.txt
+Average Time Elapsed for Iterative Sorting
+40913ms
+Average Time Elapsed for Recursive Sorting
+18ms
+
+File Being Loaded: InOrder_10.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: InOrder_100.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: InOrder_1000.txt
+Average Time Elapsed for Iterative Sorting
+3ms
+Average Time Elapsed for Recursive Sorting
+2ms
+
+File Being Loaded: InOrder_10000.txt
+Average Time Elapsed for Iterative Sorting
+356ms
+Average Time Elapsed for Recursive Sorting
+266ms
+
+File Being Loaded: InOrder_100000.txt
+Average Time Elapsed for Iterative Sorting
+36298ms
+Average Time Elapsed for Recursive Sorting
+27341ms
+
+File Being Loaded: RandomOrder_10.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: RandomOrder_100.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: RandomOrder_1000.txt
+Average Time Elapsed for Iterative Sorting
+4ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: RandomOrder_10000.txt
+Average Time Elapsed for Iterative Sorting
+551ms
+Average Time Elapsed for Recursive Sorting
+1ms
+
+File Being Loaded: RandomOrder_100000.txt
+Average Time Elapsed for Iterative Sorting
+56308ms
+Average Time Elapsed for Recursive Sorting
+14ms
+
+File Being Loaded: ReverseOrder_10.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: ReverseOrder_100.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: ReverseOrder_1000.txt
+Average Time Elapsed for Iterative Sorting
+5ms
+Average Time Elapsed for Recursive Sorting
+1ms
+
+File Being Loaded: ReverseOrder_10000.txt
+Average Time Elapsed for Iterative Sorting
+527ms
+Average Time Elapsed for Recursive Sorting
+196ms
+
+File Being Loaded: ReverseOrder_100000.txt
+Average Time Elapsed for Iterative Sorting
+53282ms
+Average Time Elapsed for Recursive Sorting
+19779ms
+

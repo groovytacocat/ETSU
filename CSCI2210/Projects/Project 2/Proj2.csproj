@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="SortClasses\SortClasses.csproj" />
+    <ProjectReference Include="BookClass\BookClass.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

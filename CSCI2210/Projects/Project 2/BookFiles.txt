@@ -1,0 +1,16 @@
+TestData/Books/AlmostInOrder_10.table.txt
+TestData/Books/AlmostInOrder_100.table.txt
+TestData/Books/AlmostInOrder_1000.table.txt
+TestData/Books/AlmostInOrder_10000.table.txt
+TestData/Books/InOrder_10.table.txt
+TestData/Books/InOrder_100.table.txt
+TestData/Books/InOrder_1000.table.txt
+TestData/Books/InOrder_10000.table.txt
+TestData/Books/RandomOrder_10.table.txt
+TestData/Books/RandomOrder_100.table.txt
+TestData/Books/RandomOrder_1000.table.txt
+TestData/Books/RandomOrder_10000.table.txt
+TestData/Books/ReverseOrder_10.table.txt
+TestData/Books/ReverseOrder_100.table.txt
+TestData/Books/ReverseOrder_1000.table.txt
+TestData/Books/ReverseOrder_10000.table.txt
