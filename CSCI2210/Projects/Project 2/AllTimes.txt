@@ -1,28 +1,3 @@
-/home/groovy/Proj2/SortClasses/SortClasses.cs(3,29): warning CS0436: The type 'ISort' in '/home/groovy/Proj2/SortClasses/ISort.cs' conflicts with the imported type 'ISort' in 'SortClasses, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/ISort.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(5,33): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(5,50): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(55,33): warning CS0436: The type 'ISort' in '/home/groovy/Proj2/SortClasses/ISort.cs' conflicts with the imported type 'ISort' in 'SortClasses, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/ISort.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/SortClasses/SortClasses.cs(22,34): warning CS0436: The type 'ISort' in '/home/groovy/Proj2/SortClasses/ISort.cs' conflicts with the imported type 'ISort' in 'SortClasses, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/ISort.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(13,19): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(47,19): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(24,78): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(52,51): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(58,26): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(58,16): warning CS8767: Nullability of reference types in type of parameter 'other' of 'int Book.CompareTo(Book other)' doesn't match implicitly implemented member 'int IComparable<Book>.CompareTo(Book? other)' (possibly because of nullability attributes). [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(24,24): warning CS8767: Nullability of reference types in type of parameter 'input' of 'bool Book.TryParse(string input, IFormatProvider? provider, out Book book)' doesn't match implicitly implemented member 'bool IParsable<Book>.TryParse(string? s, IFormatProvider? provider, out Book result)' (possibly because of nullability attributes). [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(19,9): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(19,31): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(32,18): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(37,20): warning CS0436: The type 'Book' in '/home/groovy/Proj2/BookClass/Book.cs' conflicts with the imported type 'Book' in 'BookClass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/BookClass/Book.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/BookClass/Book.cs(28,16): warning CS8625: Cannot convert null literal to non-nullable reference type. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(39,13): warning CS0436: The type 'RecursiveSort' in '/home/groovy/Proj2/SortClasses/SortClasses.cs' conflicts with the imported type 'RecursiveSort' in 'SortClasses, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/SortClasses.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(39,41): warning CS0436: The type 'RecursiveSort' in '/home/groovy/Proj2/SortClasses/SortClasses.cs' conflicts with the imported type 'RecursiveSort' in 'SortClasses, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/SortClasses.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(40,13): warning CS0436: The type 'IterSort' in '/home/groovy/Proj2/SortClasses/SortClasses.cs' conflicts with the imported type 'IterSort' in 'SortClasses, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/SortClasses.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(40,37): warning CS0436: The type 'IterSort' in '/home/groovy/Proj2/SortClasses/SortClasses.cs' conflicts with the imported type 'IterSort' in 'SortClasses, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in '/home/groovy/Proj2/SortClasses/SortClasses.cs'. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(82,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(106,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(108,26): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/groovy/Proj2/Proj2.csproj]
-/home/groovy/Proj2/Program.cs(109,48): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/groovy/Proj2/Proj2.csproj]
 File Being Loaded: TestData/Ints/AlmostInOrder_10.txt
 Average Time Elapsed for Iterative Sorting
 0ms
@@ -43,8 +18,199 @@ Average Time Elapsed for Recursive Sorting
 
 File Being Loaded: TestData/Ints/AlmostInOrder_10000.txt
 Average Time Elapsed for Iterative Sorting
-380ms
+384ms
 Average Time Elapsed for Recursive Sorting
 1ms
 
 File Being Loaded: TestData/Ints/AlmostInOrder_100000.txt
+Average Time Elapsed for Iterative Sorting
+38292ms
+Average Time Elapsed for Recursive Sorting
+17ms
+
+File Being Loaded: TestData/Ints/InOrder_10.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Ints/InOrder_100.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Ints/InOrder_1000.txt
+Average Time Elapsed for Iterative Sorting
+3ms
+Average Time Elapsed for Recursive Sorting
+2ms
+
+File Being Loaded: TestData/Ints/InOrder_10000.txt
+Average Time Elapsed for Iterative Sorting
+331ms
+Average Time Elapsed for Recursive Sorting
+267ms
+
+File Being Loaded: TestData/Ints/InOrder_100000.txt
+Average Time Elapsed for Iterative Sorting
+33168ms
+Average Time Elapsed for Recursive Sorting
+26856ms
+
+File Being Loaded: TestData/Ints/RandomOrder_10.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Ints/RandomOrder_100.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Ints/RandomOrder_1000.txt
+Average Time Elapsed for Iterative Sorting
+4ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Ints/RandomOrder_10000.txt
+Average Time Elapsed for Iterative Sorting
+531ms
+Average Time Elapsed for Recursive Sorting
+1ms
+
+File Being Loaded: TestData/Ints/RandomOrder_100000.txt
+Average Time Elapsed for Iterative Sorting
+54724ms
+Average Time Elapsed for Recursive Sorting
+13ms
+
+File Being Loaded: TestData/Ints/ReverseOrder_10.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Ints/ReverseOrder_100.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Ints/ReverseOrder_1000.txt
+Average Time Elapsed for Iterative Sorting
+4ms
+Average Time Elapsed for Recursive Sorting
+1ms
+
+File Being Loaded: TestData/Ints/ReverseOrder_10000.txt
+Average Time Elapsed for Iterative Sorting
+491ms
+Average Time Elapsed for Recursive Sorting
+180ms
+
+File Being Loaded: TestData/Ints/ReverseOrder_100000.txt
+Average Time Elapsed for Iterative Sorting
+49994ms
+Average Time Elapsed for Recursive Sorting
+18543ms
+
+File Being Loaded: TestData/Books/AlmostInOrder_10.table.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/AlmostInOrder_100.table.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/AlmostInOrder_1000.table.txt
+Average Time Elapsed for Iterative Sorting
+48ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/AlmostInOrder_10000.table.txt
+Average Time Elapsed for Iterative Sorting
+4974ms
+Average Time Elapsed for Recursive Sorting
+11ms
+
+File Being Loaded: TestData/Books/InOrder_10.table.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/InOrder_100.table.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/InOrder_1000.table.txt
+Average Time Elapsed for Iterative Sorting
+40ms
+Average Time Elapsed for Recursive Sorting
+17ms
+
+File Being Loaded: TestData/Books/InOrder_10000.table.txt
+Average Time Elapsed for Iterative Sorting
+4681ms
+Average Time Elapsed for Recursive Sorting
+1878ms
+
+File Being Loaded: TestData/Books/RandomOrder_10.table.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/RandomOrder_100.table.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/RandomOrder_1000.table.txt
+Average Time Elapsed for Iterative Sorting
+40ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/RandomOrder_10000.table.txt
+Average Time Elapsed for Iterative Sorting
+5584ms
+Average Time Elapsed for Recursive Sorting
+8ms
+
+File Being Loaded: TestData/Books/ReverseOrder_10.table.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/ReverseOrder_100.table.txt
+Average Time Elapsed for Iterative Sorting
+0ms
+Average Time Elapsed for Recursive Sorting
+0ms
+
+File Being Loaded: TestData/Books/ReverseOrder_1000.table.txt
+Average Time Elapsed for Iterative Sorting
+36ms
+Average Time Elapsed for Recursive Sorting
+15ms
+
+File Being Loaded: TestData/Books/ReverseOrder_10000.table.txt
+Average Time Elapsed for Iterative Sorting
+4239ms
+Average Time Elapsed for Recursive Sorting
+1652ms
+
