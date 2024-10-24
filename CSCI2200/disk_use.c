@@ -14,9 +14,6 @@ int main(int argc, char* argv[])
 		printf("Usage command [Mount Pont] [Threshold]\n");
 		return -1;
 	}
-
-	printf("Chosen Dir:\n%s\nThreshold: %.2f\n", argv[1], atof(argv[2]));
-
 	double threshold = atof(argv[2]);
 
 	if(statvfs(argv[1], &buffer) == 0)
