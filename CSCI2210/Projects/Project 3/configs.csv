@@ -1,0 +1,10 @@
+# Config 1 - Mean Pop, Std Dev Pop, % Infection, % Mortality, Disease Length, Quarantine Length, Mean Quar, Std Dev Quar, Length of Sim, % Travel
+500,75.5,60.0,1.5,168,72,3.5,3.8,43680,33
+# Config 2
+5000,1300.5,75.0,2.0,168,72,30.5,1.5,43680,80.0
+# Config 3
+2000,400.5,40.32,14.384,96,12,60.5,11,4368,43
+# Config 4
+10000,3500.5,25.25,5.5,168,96,30.5,28,4368,10.0
+# Config 5
+10000,800.5,25.25,15,168,96,57.5,12,43680,30.28
